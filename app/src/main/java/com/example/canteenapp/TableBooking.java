@@ -38,16 +38,21 @@ public class TableBooking extends AppCompatActivity {
         eatIn_db.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
                 for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots){
                     LocalTime timeSlotFromDb = LocalTime.parse(snapshots.getId());
                     // get slots after time now
                     if (timeNow.isBefore(timeSlotFromDb)){
+
                         CollectionReference timeslot_collection = db.collection("eatIn_timeslots").document(snapshots.getId()).collection("bookings");
+
                         timeslot_collection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
                                 int count = 0;
                                 boolean spaceAvailable=true;
+
                                 for (QueryDocumentSnapshot bookingSnapshot : queryDocumentSnapshots){
                                     if (bookingSnapshot.getData().get("student_num")!=null){
                                         count ++;
