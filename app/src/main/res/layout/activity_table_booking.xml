@@ -8,18 +8,111 @@
 
     <ScrollView
         android:id="@+id/booking_scroll_view"
-        android:layout_width="403dp"
-        android:layout_height="476dp"
+        android:layout_width="341dp"
+        android:layout_height="539dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/booking_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/ten_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10:00" />
+
+            <Button
+                android:id="@+id/ten_thirty_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10:30" />
+
+            <Button
+                android:id="@+id/eleven_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11:00" />
+
+            <Button
+                android:id="@+id/eleven_thity_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11:30" />
+
+            <Button
+                android:id="@+id/twelve_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12:00" />
+
+            <Button
+                android:id="@+id/twelve_thirty_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12:30" />
+
+            <Button
+                android:id="@+id/one_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13:00" />
+
+            <Button
+                android:id="@+id/one_thirty_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13:30" />
+
+            <Button
+                android:id="@+id/two_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="14:00" />
+
+            <Button
+                android:id="@+id/two_thity_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="14:30" />
+
+            <Button
+                android:id="@+id/three_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15:00" />
+
+            <Button
+                android:id="@+id/three_thirty_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15:30" />
+
+            <Button
+                android:id="@+id/four_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="16:00" />
+        </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/eat_in_booking_screen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chose a timeslot"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/booking_scroll_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.402" />
 </androidx.constraintlayout.widget.ConstraintLayout>
