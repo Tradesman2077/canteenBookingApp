@@ -42,19 +42,28 @@ public class TableBooking extends AppCompatActivity {
                     LocalTime timeSlotFromDb = LocalTime.parse(snapshots.getId());
                     // get slots after time now
                     if (timeNow.isBefore(timeSlotFromDb)){
-                        Log.d(TAG, " time " + timeSlotFromDb);
                         CollectionReference timeslot_collection = db.collection("eatIn_timeslots").document(snapshots.getId()).collection("bookings");
                         timeslot_collection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                int count = 0;
+                                boolean spaceAvailable=true;
                                 for (QueryDocumentSnapshot bookingSnapshot : queryDocumentSnapshots){
-                                    Log.d(TAG, "booking" + bookingSnapshot.getData().get("student_num"));
-                                    Log.d(TAG, "booking" + bookingSnapshot.getData().get("date"));
+                                    if (bookingSnapshot.getData().get("student_num")!=null){
+                                        count ++;
+                                    }
+                                    if (count >= 3){
+                                        spaceAvailable = false;
+                                    }
 
                                 }
+                                if (spaceAvailable){
+                                    ///create a new textView and add to list view
+                                    Log.d(TAG, "adding" + timeSlotFromDb);
+                                }
+
                             }
                         });
-                        // check if space
 
                     }
                 }
