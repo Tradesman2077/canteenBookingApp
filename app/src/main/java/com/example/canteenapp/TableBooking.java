@@ -40,6 +40,7 @@ public class TableBooking extends AppCompatActivity {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
                 for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots){
+
                     LocalTime timeSlotFromDb = LocalTime.parse(snapshots.getId());
                     // get slots after time now
                     if (timeNow.isBefore(timeSlotFromDb)){
@@ -65,6 +66,7 @@ public class TableBooking extends AppCompatActivity {
                                 if (spaceAvailable){
                                     ///create a new textView and add to list view
                                     Log.d(TAG, "adding" + timeSlotFromDb);
+                                    ///push to listview
                                 }
 
                             }
