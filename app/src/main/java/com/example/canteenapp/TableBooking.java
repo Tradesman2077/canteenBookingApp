@@ -1,8 +1,12 @@
 package com.example.canteenapp;
 
+import android.icu.text.UFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,11 +18,14 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class TableBooking extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference eatIn_db = db.collection("eatIn_timeslots");
+    private LinearLayout bookingsLayout;
+    private ArrayList<String> availableTimes = new ArrayList<>();
 
     final String TAG = "Table_Booking";
     ///still working on this
@@ -28,17 +35,21 @@ public class TableBooking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_booking);
 
+        bookingsLayout = findViewById(R.id.booking_linear_layout);
+
         ///get current time/date
         LocalTime timeNow = LocalTime.now();
+
+
         eatIn_db.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots){
+                for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
 
                     LocalTime timeSlotFromDb = LocalTime.parse(snapshots.getId());
                     // get slots after time now
-                    if (timeNow.isBefore(timeSlotFromDb)){
+                    if (timeNow.isBefore(timeSlotFromDb)) {
 
                         CollectionReference timeslot_collection = db.collection("eatIn_timeslots").document(snapshots.getId()).collection("bookings");
 
@@ -47,23 +58,30 @@ public class TableBooking extends AppCompatActivity {
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
                                 int count = 0;
-                                boolean spaceAvailable=true;
+                                boolean spaceAvailable = true;
 
-                                for (QueryDocumentSnapshot bookingSnapshot : queryDocumentSnapshots){
-                                    if (bookingSnapshot.getData().get("student_num")!=null){
-                                        count ++;
+                                for (QueryDocumentSnapshot bookingSnapshot : queryDocumentSnapshots) {
+                                    if (bookingSnapshot.getData().get("student_num") != null) {
+
+                                        count++;
                                     }
-                                    if (count >= 3){
+                                    if (count >= 3) {
                                         spaceAvailable = false;
                                     }
 
                                 }
-                                if (spaceAvailable){
+                                if (spaceAvailable) {
                                     ///create a new textView and add to list view
-                                    Log.d(TAG, "adding" + timeSlotFromDb);
-                                    ///push to listview
-                                }
+                                    //Log.d(TAG, "adding" + timeSlotFromDb);
+                                    availableTimes.add(timeSlotFromDb.toString());
+                                    TextView newTextView = new TextView(getApplicationContext());
+                                    newTextView.setText(timeSlotFromDb.toString());
+                                    newTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    newTextView.setTextSize(26);
+                                    bookingsLayout.addView(newTextView);
 
+
+                                }
                             }
                         });
 
@@ -71,10 +89,9 @@ public class TableBooking extends AppCompatActivity {
                 }
 
             }
-    });
 
 
-
+        });
 
 
         //check which slots are free in next two hours
