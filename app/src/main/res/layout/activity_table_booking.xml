@@ -19,85 +19,139 @@
             android:id="@+id/booking_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/ten_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="10:00" />
+                android:text="10:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"
+                />
 
             <Button
                 android:id="@+id/ten_thirty_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="10:30" />
+                android:text="10:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/eleven_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="11:00" />
+                android:text="11:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/eleven_thity_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="11:30" />
+                android:text="11:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/twelve_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12:00" />
+                android:text="12:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/twelve_thirty_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12:30" />
+                android:text="12:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/one_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="13:00" />
+                android:text="13:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/one_thirty_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="13:30" />
+                android:text="13:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/two_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="14:00" />
+                android:text="14:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/two_thity_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="14:30" />
+                android:text="14:30"
+                android:textColor="#D5D5D5"
+                android:textSize="32sp"
+                app:backgroundTint="#C3C3C3"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/three_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="15:00" />
+                android:text="15:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/three_thirty_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="15:30" />
+                android:text="15:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/four_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="16:00" />
+                android:background="@android:color/transparent"
+                android:text="16:00"
+                android:textColor="#D5D5D5"
+                android:textSize="32sp"
+                app:backgroundTint="#C3C3C3" />
         </LinearLayout>
     </ScrollView>
 

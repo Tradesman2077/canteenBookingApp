@@ -1,6 +1,7 @@
 package com.example.canteenapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.icu.text.UFormat;
 import android.os.Build;
@@ -21,8 +22,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class TableBooking extends AppCompatActivity {
 
@@ -86,6 +91,7 @@ public class TableBooking extends AppCompatActivity {
 
         ///get current time/date
         LocalTime timeNow = LocalTime.now();
+        LocalDateTime localDateTimeNow = LocalDateTime.now();
         //get available slots and highlight buttons
         getAvailableTimes(timeNow);
     }
@@ -97,11 +103,29 @@ public class TableBooking extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                //clear old bookings
                 for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
+                    CollectionReference timeslot_collection = db.collection("eatIn_timeslots").document(snapshots.getId()).collection("bookings");
                     LocalTime timeSlotFromDb = LocalTime.parse(snapshots.getId());
+                    timeslot_collection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            for (QueryDocumentSnapshot booking : queryDocumentSnapshots){
+                                String stringDate = (String) booking.getData().get("date");
+                                Log.d(TAG, "onSuccess: + " + stringDate);
+                                if (!stringDate.equals("")){
+                                    if (LocalDate.parse(stringDate).isBefore(LocalDate.now())){
+                                        String id = booking.getId();
+                                        timeslot_collection.document(id).delete();
+                                    }
+                                }
+                            }
+                        }
+                    });
                     // get slots after time now
                     if (timeNow.isBefore(timeSlotFromDb)) {
-                        CollectionReference timeslot_collection = db.collection("eatIn_timeslots").document(snapshots.getId()).collection("bookings");
+                        Log.d(TAG, timeSlotFromDb.toString());
                         timeslot_collection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -118,15 +142,21 @@ public class TableBooking extends AppCompatActivity {
                                 if (spaceAvailable){
                                     for (Button button : buttons){
                                         if (timeSlotFromDb.toString().equals(button.getText().toString())){
+
+                                            button.setTextColor(Color.GRAY);
                                             button.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
-                                                    Toast.makeText(TableBooking.this, "cklicked", Toast.LENGTH_SHORT).show();
+                                                    Log.d(TAG, "onClick: clicked");
+                                                    CollectionReference bookings_ref = db.collection("eatIn_timeslots").document(timeSlotFromDb.toString()).collection("bookings");
+                                                    HashMap<String, Object> newBooking = new HashMap<>();
+                                                    String bookingDate = LocalDate.now().toString();
+                                                    newBooking.put("date", bookingDate);
+                                                    newBooking.put("student_num", "234234234");
+                                                    bookings_ref.add(newBooking);
+                                                    startActivity(new Intent(TableBooking.this, ConfirmationScreen.class));
                                                 }
                                             });
-                                        }
-                                        else{
-                                            button.setBackgroundColor(Color.rgb(201,201,201));
                                         }
                                     }
                                 }
