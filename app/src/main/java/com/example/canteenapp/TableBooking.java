@@ -154,7 +154,9 @@ public class TableBooking extends AppCompatActivity {
                                                     newBooking.put("date", bookingDate);
                                                     newBooking.put("student_num", "234234234");
                                                     bookings_ref.add(newBooking);
-                                                    startActivity(new Intent(TableBooking.this, ConfirmationScreen.class));
+                                                    Intent booking = new Intent(TableBooking.this, ConfirmationScreen.class);
+                                                    booking.putExtra("time", button.getText());
+                                                    startActivity(booking);
                                                 }
                                             });
                                         }
