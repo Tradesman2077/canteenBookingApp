@@ -32,7 +32,9 @@ public class ConfirmationScreen extends AppCompatActivity {
                 startActivity(new Intent(ConfirmationScreen.this, MainMenuAfterLogin.class));
             }
         });
-
-
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ConfirmationScreen.this, MainMenuAfterLogin.class));
     }
 }

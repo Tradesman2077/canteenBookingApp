@@ -14,6 +14,7 @@ public class MainMenuAfterLogin extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,7 @@ public class MainMenuAfterLogin extends AppCompatActivity {
 
         bookTableButton = findViewById(R.id.book_button);
         takeAwayButton = findViewById(R.id.collect_button);
+
 
 
 

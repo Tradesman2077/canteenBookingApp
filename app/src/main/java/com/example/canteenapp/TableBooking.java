@@ -2,10 +2,12 @@ package com.example.canteenapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.icu.text.UFormat;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -51,6 +56,8 @@ public class TableBooking extends AppCompatActivity {
     private Button threeButton;
     private Button threeThirtyButton;
     private Button fourButton;
+    private String studentNum;
+    boolean alreadyBooked = false;
 
     final String TAG = "Table_Booking";
 
@@ -88,7 +95,9 @@ public class TableBooking extends AppCompatActivity {
         buttons.add(fourButton);
 
         bookingsLayout = findViewById(R.id.booking_linear_layout);
-
+        //get student num
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        studentNum = sharedPreferences.getString("studentNum", "NothingFound");
         ///get current time/date
         LocalTime timeNow = LocalTime.now();
         LocalDateTime localDateTimeNow = LocalDateTime.now();
@@ -113,7 +122,11 @@ public class TableBooking extends AppCompatActivity {
                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                             for (QueryDocumentSnapshot booking : queryDocumentSnapshots){
                                 String stringDate = (String) booking.getData().get("date");
-                                Log.d(TAG, "onSuccess: + " + stringDate);
+                                String bookedStudent = (String) booking.getData().get("student_num");
+                                if (bookedStudent !=null && bookedStudent.equals(studentNum)){
+                                    alreadyBooked = true;
+                                    Toast.makeText(getApplicationContext(), "You already have a booking at " + timeSlotFromDb.toString(), Toast.LENGTH_LONG).show();
+                                }
                                 if (!stringDate.equals("")){
                                     if (LocalDate.parse(stringDate).isBefore(LocalDate.now())){
                                         String id = booking.getId();
@@ -123,9 +136,8 @@ public class TableBooking extends AppCompatActivity {
                             }
                         }
                     });
-                    // get slots after time now
+                    // get slots after time now and check for previous bookings
                     if (timeNow.isBefore(timeSlotFromDb)) {
-                        Log.d(TAG, timeSlotFromDb.toString());
                         timeslot_collection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -135,30 +147,32 @@ public class TableBooking extends AppCompatActivity {
                                     if (bookingSnapshot.getData().get("student_num") != null) {
                                         count++;
                                     }
-                                    if (count >= 3) {
+                                    if (count >= 20 || alreadyBooked) {
                                         spaceAvailable = false;
                                     }
                                 }
                                 if (spaceAvailable){
-                                    for (Button button : buttons){
-                                        if (timeSlotFromDb.toString().equals(button.getText().toString())){
+                                    for (Button button : buttons) {
+                                        if (timeSlotFromDb.toString().equals(button.getText().toString())) {
 
                                             button.setTextColor(Color.GRAY);
                                             button.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
-                                                    Log.d(TAG, "onClick: clicked");
                                                     CollectionReference bookings_ref = db.collection("eatIn_timeslots").document(timeSlotFromDb.toString()).collection("bookings");
                                                     HashMap<String, Object> newBooking = new HashMap<>();
                                                     String bookingDate = LocalDate.now().toString();
                                                     newBooking.put("date", bookingDate);
-                                                    newBooking.put("student_num", "234234234");
+                                                    newBooking.put("student_num", studentNum);
                                                     bookings_ref.add(newBooking);
                                                     Intent booking = new Intent(TableBooking.this, ConfirmationScreen.class);
                                                     booking.putExtra("time", button.getText());
                                                     startActivity(booking);
                                                 }
                                             });
+                                        }
+                                        if (alreadyBooked){
+                                            Toast.makeText(getApplicationContext(), "You already have a booking today please wait till after this booking to book again", Toast.LENGTH_LONG).show();
                                         }
                                     }
                                 }
