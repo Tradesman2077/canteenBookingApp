@@ -5,7 +5,7 @@
     <string name="continue_button">Continue</string>
     <string name="enter_student_number">Please enter your student number below</string>
     <string name="confirm_button">Confirm</string>
-    <string name="instructions">Click to book a seat or alternatively book a collection. You can choose your meal choice when you arrive. All payments to be made by card only.</string>
-    <string name="book_button">Book a seat</string>
-    <string name="collect_button">Collection</string>
+    <string name="instructions">Select your type of order. Choose your meal choice when you arrive. Pay by card only.</string>
+    <string name="book_button">Seat</string>
+    <string name="collect_button">Collect</string>
 </resources>
