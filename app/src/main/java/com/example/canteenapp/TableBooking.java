@@ -41,6 +41,8 @@ public class TableBooking extends AppCompatActivity {
     private LinearLayout bookingsLayout;
 
     private ArrayList<String> availableTimes = new ArrayList<>();
+
+    ///button list
     private ArrayList<Button> buttons = new ArrayList<>();
 
     private Button tenButton;
@@ -58,6 +60,7 @@ public class TableBooking extends AppCompatActivity {
     private Button fourButton;
     private String studentNum;
     boolean alreadyBooked = false;
+    public static final int MAXIMUM_CAPACITY = 20;
 
     final String TAG = "Table_Booking";
 
@@ -101,18 +104,15 @@ public class TableBooking extends AppCompatActivity {
         ///get current time/date
         LocalTime timeNow = LocalTime.now();
         LocalDateTime localDateTimeNow = LocalDateTime.now();
+
         //get available slots and highlight buttons
         getAvailableTimes(timeNow);
     }
-
-
     private void getAvailableTimes(LocalTime timeNow){
-
         eatIn_db.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
                 //clear old bookings
                 for (QueryDocumentSnapshot snapshots : queryDocumentSnapshots) {
                     CollectionReference timeslot_collection = db.collection("eatIn_timeslots").document(snapshots.getId()).collection("bookings");
@@ -147,14 +147,13 @@ public class TableBooking extends AppCompatActivity {
                                     if (bookingSnapshot.getData().get("student_num") != null) {
                                         count++;
                                     }
-                                    if (count >= 20 || alreadyBooked) {
+                                    if (count >= MAXIMUM_CAPACITY || alreadyBooked) {
                                         spaceAvailable = false;
                                     }
                                 }
                                 if (spaceAvailable){
                                     for (Button button : buttons) {
                                         if (timeSlotFromDb.toString().equals(button.getText().toString())) {
-
                                             button.setTextColor(Color.GRAY);
                                             button.setOnClickListener(new View.OnClickListener() {
                                                 @Override
