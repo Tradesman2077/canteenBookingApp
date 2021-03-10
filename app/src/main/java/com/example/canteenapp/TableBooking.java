@@ -148,6 +148,7 @@ public class TableBooking extends AppCompatActivity {
                                         count++;
                                     }
                                     if (count >= MAXIMUM_CAPACITY || alreadyBooked) {
+                                        Log.d(TAG, "onSuccess: " + alreadyBooked);
                                         spaceAvailable = false;
                                     }
                                 }

@@ -46,4 +46,14 @@
         app:layout_constraintTop_toBottomOf="@+id/student_num_edit_text"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="266dp"
+        android:layout_height="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_button"
+        app:srcCompat="@mipmap/logo_foreground" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

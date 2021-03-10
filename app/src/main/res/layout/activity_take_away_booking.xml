@@ -4,6 +4,169 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TakeAwayBooking">
+    tools:context=".TableBooking">
 
+    <ScrollView
+        android:id="@+id/takeAway_booking_scroll_view"
+        android:layout_width="341dp"
+        android:layout_height="539dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/takeAway_booking_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/takeAway_ten_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"
+                />
+
+            <Button
+                android:id="@+id/takeAway_ten_thirty_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_eleven_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_eleven_thity_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_twelve_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_twelve_thirty_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_one_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_one_thirty_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_two_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="14:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_two_thity_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="14:30"
+                android:textColor="#D5D5D5"
+                android:textSize="32sp"
+                app:backgroundTint="#C3C3C3"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_three_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15:00"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_three_thirty_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15:30"
+                android:textColor="#D5D5D5"
+                app:backgroundTint="#C3C3C3"
+                android:textSize="32sp"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/takeAway_four_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="16:00"
+                android:textColor="#D5D5D5"
+                android:textSize="32sp"
+                app:backgroundTint="#C3C3C3" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/takeAway_booking_screen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a timeslot"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/takeAway_booking_scroll_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.402" />
 </androidx.constraintlayout.widget.ConstraintLayout>

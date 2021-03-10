@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ConfirmationScreen">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="266dp"
+        android:layout_height="212dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/close_button"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@mipmap/logo_foreground" />
+
     <TextView
         android:id="@+id/booking_confimation_textEdit"
         android:layout_width="wrap_content"
@@ -14,16 +27,17 @@
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.229" />
 
     <Button
         android:id="@+id/close_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="60dp"
         android:text="close"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/booking_confimation_textEdit" />

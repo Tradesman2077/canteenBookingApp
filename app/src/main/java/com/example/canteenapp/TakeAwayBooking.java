@@ -67,21 +67,21 @@ public class TakeAwayBooking extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table_booking);
+        setContentView(R.layout.activity_take_away_booking);
 
-        tenButton = findViewById(R.id.ten_button);
-        tenThirtyButton = findViewById(R.id.ten_thirty_button);
-        elevenButton = findViewById(R.id.eleven_button);
-        elevenThirtyButton = findViewById(R.id.eleven_thity_button);
-        twelveButton = findViewById(R.id.twelve_button);
-        twelveThirtyButton = findViewById(R.id.twelve_thirty_button);
-        oneButton = findViewById(R.id.one_button);
-        oneThirtyButton = findViewById(R.id.one_thirty_button);
-        twoButton =findViewById(R.id.two_button);
-        twoThirtyButton = findViewById(R.id.two_thity_button);
-        threeButton = findViewById(R.id.three_button);
-        threeThirtyButton = findViewById(R.id.three_thirty_button);
-        fourButton = findViewById(R.id.four_button);
+        tenButton = findViewById(R.id.takeAway_ten_button);
+        tenThirtyButton = findViewById(R.id.takeAway_ten_thirty_button);
+        elevenButton = findViewById(R.id.takeAway_eleven_button);
+        elevenThirtyButton = findViewById(R.id.takeAway_eleven_thity_button);
+        twelveButton = findViewById(R.id.takeAway_twelve_button);
+        twelveThirtyButton = findViewById(R.id.takeAway_twelve_thirty_button);
+        oneButton = findViewById(R.id.takeAway_one_button);
+        oneThirtyButton = findViewById(R.id.takeAway_one_thirty_button);
+        twoButton =findViewById(R.id.takeAway_two_button);
+        twoThirtyButton = findViewById(R.id.takeAway_two_thity_button);
+        threeButton = findViewById(R.id.takeAway_three_button);
+        threeThirtyButton = findViewById(R.id.takeAway_three_thirty_button);
+        fourButton = findViewById(R.id.takeAway_four_button);
 
         buttons.add(tenButton);
         buttons.add(tenThirtyButton);
@@ -97,7 +97,7 @@ public class TakeAwayBooking extends AppCompatActivity {
         buttons.add(threeThirtyButton);
         buttons.add(fourButton);
 
-        bookingsLayout = findViewById(R.id.booking_linear_layout);
+        bookingsLayout = findViewById(R.id.takeAway_booking_linear_layout);
         //get student num
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         studentNum = sharedPreferences.getString("studentNum", "NothingFound");
