@@ -125,7 +125,9 @@ public class TakeAwayBooking extends AppCompatActivity {
                                 String bookedStudent = (String) booking.getData().get("student_num");
                                 if (bookedStudent !=null && bookedStudent.equals(studentNum)){
                                     alreadyBooked = true;
-                                    Toast.makeText(getApplicationContext(), "You already have a booking at " + timeSlotFromDb.toString(), Toast.LENGTH_LONG).show();
+                                    Intent alreadyBooked = new Intent(TakeAwayBooking.this, Reminder.class);
+                                    alreadyBooked.putExtra("time", timeSlotFromDb.toString());
+                                    startActivity(alreadyBooked);
                                 }
                                 if (!stringDate.equals("")){
                                     if (LocalDate.parse(stringDate).isBefore(LocalDate.now())){
@@ -147,7 +149,7 @@ public class TakeAwayBooking extends AppCompatActivity {
                                     if (bookingSnapshot.getData().get("student_num") != null) {
                                         count++;
                                     }
-                                    if (count >= MAXIMUM_CAPACITY || alreadyBooked) {
+                                    if (count >= MAXIMUM_CAPACITY) {
                                         spaceAvailable = false;
                                     }
                                 }
@@ -169,9 +171,6 @@ public class TakeAwayBooking extends AppCompatActivity {
                                                     startActivity(booking);
                                                 }
                                             });
-                                        }
-                                        if (alreadyBooked){
-                                            Toast.makeText(getApplicationContext(), "You already have a booking today please wait till after this booking to book again", Toast.LENGTH_LONG).show();
                                         }
                                     }
                                 }

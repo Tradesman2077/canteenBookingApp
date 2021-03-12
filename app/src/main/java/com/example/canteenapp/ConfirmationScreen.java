@@ -29,12 +29,12 @@ public class ConfirmationScreen extends AppCompatActivity {
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ConfirmationScreen.this, MainMenuAfterLogin.class));
+                startActivity(new Intent(ConfirmationScreen.this, MainActivity.class));
             }
         });
     }
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(ConfirmationScreen.this, MainMenuAfterLogin.class));
+        startActivity(new Intent(ConfirmationScreen.this, MainActivity.class));
     }
 }
