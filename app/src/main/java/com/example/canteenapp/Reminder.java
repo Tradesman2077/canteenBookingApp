@@ -22,7 +22,7 @@ public class Reminder extends AppCompatActivity {
         close = findViewById(R.id.close_button_reminder);
         textReminder = findViewById(R.id.reminder_text);
 
-        textReminder.setText("You already have a booking at- " + time + " please wait till after this booking before booking again.");
+        textReminder.setText("You have already booked at " + time + ". Please wait until after this booking before booking again.");
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
