@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +60,7 @@ public class TakeAwayBooking extends AppCompatActivity {
     private Button threeThirtyButton;
     private Button fourButton;
     private String studentNum;
+    private ProgressBar progressBar;
     boolean alreadyBooked = false;
     public static final int MAXIMUM_CAPACITY = 20;
 
@@ -82,6 +84,7 @@ public class TakeAwayBooking extends AppCompatActivity {
         threeButton = findViewById(R.id.takeAway_three_button);
         threeThirtyButton = findViewById(R.id.takeAway_three_thirty_button);
         fourButton = findViewById(R.id.takeAway_four_button);
+        progressBar = findViewById(R.id.progress_take_away);
 
         buttons.add(tenButton);
         buttons.add(tenThirtyButton);
@@ -123,7 +126,7 @@ public class TakeAwayBooking extends AppCompatActivity {
                             for (QueryDocumentSnapshot booking : queryDocumentSnapshots){
                                 String stringDate = (String) booking.getData().get("date");
                                 String bookedStudent = (String) booking.getData().get("student_num");
-                                if (bookedStudent !=null && bookedStudent.equals(studentNum)){
+                                if (bookedStudent !=null && bookedStudent.equals(studentNum)  && timeSlotFromDb.isAfter(timeNow)){
                                     alreadyBooked = true;
                                     Intent alreadyBooked = new Intent(TakeAwayBooking.this, Reminder.class);
                                     alreadyBooked.putExtra("time", timeSlotFromDb.toString());
@@ -173,6 +176,7 @@ public class TakeAwayBooking extends AppCompatActivity {
                                             });
                                         }
                                     }
+                                    progressBar.setVisibility(View.GONE);
                                 }
                             }
                         });

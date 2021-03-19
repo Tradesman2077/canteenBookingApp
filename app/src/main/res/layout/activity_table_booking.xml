@@ -21,6 +21,11 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:orientation="vertical">
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:id="@+id/progress_table"></ProgressBar>
 
             <Button
                 android:id="@+id/ten_button"
@@ -169,4 +174,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.402" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
