@@ -3,7 +3,7 @@
     <string name="welcome_to_the">Welcome to the</string>
     <string name="ltu_canteen">LTU Canteen</string>
     <string name="continue_button">Continue</string>
-    <string name="enter_student_number">Please enter your student number below</string>
+    <string name="enter_student_number">Please enter your student number</string>
     <string name="confirm_button">Confirm</string>
     <string name="instructions">Select your type of order. Choose your meal choice when you arrive. Pay by card only.</string>
     <string name="book_button">Seat</string>
