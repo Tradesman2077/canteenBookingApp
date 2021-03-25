@@ -25,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                android:id="@+id/progress_table"></ProgressBar>
+                android:id="@+id/progress_table"
+                ></ProgressBar>
 
             <Button
                 android:id="@+id/ten_button"
